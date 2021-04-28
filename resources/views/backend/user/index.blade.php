@@ -32,13 +32,26 @@
                             <td>{{ $user->usertype }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>
-                                <a href="{{ route('user.edit',['user'=>$user->id]) }}"  class="btn btn-info ">Edit</a>
-                                <a href="{{ route('user.delete',['user'=>$user->id]) }}"  class="btn btn-danger ">Delete</a>
-                            </td>
+                            @if ($k==0)
+                                <td>
+                                    <a href="{{ route('user.edit',['user'=>$user->id]) }}"  class="btn btn-info ">Edit</a>
+                                </td>
+                            @else
+                                <td>
+                                    <form action="{{ route('user.delete',['user'=>$user->id]) }}" method="POST" id='myForm'>
+                                        @method('DELETE')
+                                        @csrf
+                                    </form>
+                                    <a href="{{ route('user.edit',['user'=>$user->id]) }}"  class="btn btn-info ">Edit</a>
+                                    <a href="javascript:void(0);" onClick='on_delete();' class="btn btn-danger ">Delete</a>
+                                </td>
+                            @endif
+
+
+
+
                         </tr>
                       @endforeach
-
                   </tbody>
                   {{-- <tfoot>
                       <tr>
@@ -67,5 +80,26 @@
 @section('body_last_add_js')
     <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
     <script src="{{ asset('backend/js/pages/data-table.js')}}"></script>
+    <script>
+        function on_delete(){
+            Swal.fire({
+                title: '確定刪除嗎？',
+                text: "你將無法恢復此刪除！",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '確定删除！'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#myForm').submit();
+                    }
+            })
+            //alert(action);
+        }
+    </script>
 @endsection
+
+
+
 

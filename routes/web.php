@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,17 @@ Route::prefix('users')->name('user.')->group(function () {
     Route::post('/', [UserController::class,'store'])->name('store');
     Route::get('/{user}/edit', [UserController::class,'edit'])->name('edit');
     Route::put('/{user}', [UserController::class,'update'])->name('update');
-    Route::get('/{user}', [UserController::class,'delete'])->name('delete');
+    Route::delete('/{user}/delete', [UserController::class,'delete'])->name('delete');
+});
+
+
+Route::prefix('profile')->name('profile.')->group(function () {
+    Route::get('/', [ProfileController::class,'index'])->name('index');
+    Route::get('/{user}/edit_pass', [ProfileController::class,'edit_pass'])->name('pass.edit');
+    Route::put('/password/{user}', [ProfileController::class,'update_pass'])->name('pass.update');
+    // Route::get('/create', [UserController::class,'create'])->name('create');
+    // Route::post('/', [UserController::class,'store'])->name('store');
+    Route::get('/{user}/edit', [ProfileController::class,'edit'])->name('edit');
+    Route::put('/{user}', [ProfileController::class,'update'])->name('update');
+    // Route::delete('/{user}/delete', [UserController::class,'delete'])->name('delete');
 });

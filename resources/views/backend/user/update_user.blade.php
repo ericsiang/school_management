@@ -6,7 +6,7 @@
     <!-- Basic Forms -->
     <div class="box">
         <div class="box-header with-border">
-            <h4 class="box-title">Add User</h4>
+            <h4 class="box-title">Edit User</h4>
 
         </div>
         <!-- /.box-header -->
@@ -23,12 +23,18 @@
                                         <div class="form-group">
                                             <h5>User Role <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="usertype" id="select" required class="form-control">
+                                                <select name="usertype" id="select" required class="form-control"
+                                                @if ($user->id==1)
+                                                    disabled
+                                                @endif>
                                                     <option value="" selected='' disabled=''>Select Role</option>
                                                     <option value="Admin" {{ $user->usertype=='Admin' ? 'selected' : ''  }}>Admin</option>
                                                     <option value="User" {{ $user->usertype=='User' ? 'selected' : ''  }}>User</option>
                                                 </select>
                                             </div>
+                                            @error('usertype')
+                                                <span style="color:#FF0000;">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -39,7 +45,9 @@
                                                    >
                                                 <div class="help-block"></div>
                                             </div>
-
+                                            @error('name')
+                                                <span style="color:#FF0000;">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -52,14 +60,17 @@
                                                    >
                                                 <div class="help-block"></div>
                                             </div>
+                                            @error('email')
+                                                <span style="color:#FF0000;">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <h5>Password<span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <input type="password" name="password" class="form-control" required=""
-                                                    data-validation-required-message="This field is required">
+                                                <input type="password" name="password" class="form-control"
+                                                    >
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>

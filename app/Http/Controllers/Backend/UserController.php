@@ -44,15 +44,19 @@ class UserController extends Controller
     }
 
     public function update(Request $request,User $user){
+        // dd($request->all());
         $validated=$request->validate(
             [
                 'usertype'=>'required',
                 'name'=>'required',
                 'email'=>'required|email',
-                'password'=>'required'
+                //'password'=>'required'
             ],
         );
-        $validated['password']=bcrypt($request->password);
+        if($request->password){
+            $validated['password']=bcrypt($request->password);
+        }
+
 
         $user->update($validated);
         $notification=[
@@ -66,7 +70,7 @@ class UserController extends Controller
         $user->delete();
         $notification=[
             'message'=>'刪除User成功',
-            'alert-type'=>'success',
+            'alert-type'=>'info',
         ];
         return redirect()->route('user.index')->with($notification);
     }
