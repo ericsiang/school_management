@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\StudentClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,14 @@ Route::prefix('profile')->name('profile.')->group(function () {
     Route::get('/{user}/edit', [ProfileController::class,'edit'])->name('edit');
     Route::put('/{user}', [ProfileController::class,'update'])->name('update');
     // Route::delete('/{user}/delete', [UserController::class,'delete'])->name('delete');
+});
+
+Route::prefix('student/class')->name('student_class.')->group(function () {
+    Route::get('/', [StudentClassController::class,'index'])->name('index');
+    Route::get('/create', [StudentClassController::class,'create'])->name('create');
+    Route::post('/', [StudentClassController::class,'store'])->name('store');
+    Route::get('/{student_class}/edit', [StudentClassController::class,'edit'])->name('edit');
+    Route::put('/{student_class}', [StudentClassController::class,'update'])->name('update');
+    Route::delete('/{student_class}/delete', [StudentClassController::class,'delete'])->name('delete');
+
 });
