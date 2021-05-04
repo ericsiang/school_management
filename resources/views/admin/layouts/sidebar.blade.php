@@ -56,8 +56,10 @@ $route=Route::current()->getName();
 
                 </ul>
             </li>
-
-            <li class="treeview {{ $prefix=='/student/class' ? 'active' : '' }}">
+            @php
+                $prefix_arr=['/student/class','/student/year','/student/group','/student/shift'];
+            @endphp
+            <li class="treeview {{ in_array($prefix,$prefix_arr)  ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Setup Management </span>
                     <span class="pull-right-container">
@@ -66,6 +68,14 @@ $route=Route::current()->getName();
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('student_class.index') }}"><i class="ti-more"></i>Student Class</a></li>
+
+                    <li><a href="{{ route('student_year.index') }}"><i class="ti-more"></i>Student Year</a></li>
+
+                    <li><a href="{{ route('student_group.index') }}"><i class="ti-more"></i>Student Group</a></li>
+
+                    <li><a href="{{ route('student_shift.index') }}"><i class="ti-more"></i>Student Shift</a></li>
+
+                    <li><a href="{{ route('fee_category.index') }}"><i class="ti-more"></i>Fee Category</a></li>
                 </ul>
             </li>
 

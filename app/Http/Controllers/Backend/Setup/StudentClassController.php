@@ -49,7 +49,7 @@ class StudentClassController extends Controller
         );
         //dd($validated);
 
-        $student_class=StudentClass::update($validated);
+        $student_class=$student_class->update($validated);
         $notification=[
             'message'=>'修改Student Class成功',
             'alert-type'=>'success',
@@ -61,7 +61,7 @@ class StudentClassController extends Controller
     public function delete(Request $request,StudentClass $student_class){
         $student_class->delete();
         $notification=[
-            'message'=>'刪除User成功',
+            'message'=>'刪除Student Class成功',
             'alert-type'=>'info',
         ];
         return redirect()->route('student_class.index')->with($notification);
