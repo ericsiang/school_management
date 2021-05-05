@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
@@ -109,3 +110,16 @@ Route::prefix('fee/category')->name('fee_category.')->group(function () {
     Route::put('/{fee_category}', [FeeCategoryController::class,'update'])->name('update');
     Route::delete('/{fee_category}/delete', [FeeCategoryController::class,'delete'])->name('delete');
 });
+
+
+
+//fee category amount
+Route::prefix('fee/category/amount')->name('fee_category_amount.')->group(function () {
+    Route::get('/', [FeeAmountController::class,'index'])->name('index');
+    Route::get('/create', [FeeAmountController::class,'create'])->name('create');
+    Route::post('/', [FeeAmountController::class,'store'])->name('store');
+    Route::get('/{fee_category_amount}/edit', [FeeAmountController::class,'edit'])->name('edit');
+    Route::put('/{fee_category_amount}', [FeeAmountController::class,'update'])->name('update');
+    Route::delete('/{fee_category_amount}/delete', [FeeAmountController::class,'delete'])->name('delete');
+});
+
