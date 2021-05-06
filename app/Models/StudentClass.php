@@ -12,4 +12,6 @@ class StudentClass extends Model
     protected $fillable=[
         'name'
     ];
+
+    
 }
