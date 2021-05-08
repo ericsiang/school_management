@@ -38,12 +38,12 @@
                                 </td>
                             @else
                                 <td>
-                                    <form action="{{ route('user.delete',['user'=>$user->id]) }}" method="POST" id='myForm'>
+                                    <form action="{{ route('user.delete',['user'=>$user->id]) }}" method="POST" id='myForm_{{ $user->id }}'>
                                         @method('DELETE')
                                         @csrf
                                     </form>
                                     <a href="{{ route('user.edit',['user'=>$user->id]) }}"  class="btn btn-info ">Edit</a>
-                                    <a href="javascript:void(0);" onClick='on_delete();' class="btn btn-danger ">Delete</a>
+                                    <a href="javascript:void(0);" onClick='on_delete({{ $user->id }});' class="btn btn-danger ">Delete</a>
                                 </td>
                             @endif
 
@@ -81,7 +81,7 @@
     <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
     <script src="{{ asset('backend/js/pages/data-table.js')}}"></script>
     <script>
-        function on_delete(){
+        function on_delete(id){
             Swal.fire({
                 title: '確定刪除嗎？',
                 text: "你將無法恢復此刪除！",
@@ -92,7 +92,7 @@
                 confirmButtonText: '確定删除！'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#myForm').submit();
+                      $('#myForm_'+id).submit();
                     }
             })
             //alert(action);

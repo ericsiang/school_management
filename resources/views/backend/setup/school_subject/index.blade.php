@@ -9,8 +9,8 @@
 
        <div class="box">
           <div class="box-header with-border">
-            <h3 class="box-title">Fee Category List</h3>
-            <a href="{{ route('fee_category.create') }}" style="float:right" class="btn btn-rounded btn-success mb-5">Add Fee Category</a>
+            <h3 class="box-title">School Subject List</h3>
+            <a href="{{ route('school_subject.create') }}" style="float:right" class="btn btn-rounded btn-success mb-5">Add School Subject</a>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -24,18 +24,18 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach ($fee_categorys as $k => $fee_category)
+                      @foreach ($school_subjects as $k => $school_subject)
                         <tr>
                             <td>{{ $k+1 }}</td>
-                            <td>{{ $fee_category->name }}</td>
+                            <td>{{ $school_subject->name }}</td>
 
                             <td>
-                                <form action="{{ route('fee_category.delete',['fee_category'=>$fee_category->id]) }}" method="POST" id='myForm_{{ $fee_category->id }}'>
+                                <form action="{{ route('school_subject.delete',['school_subject'=>$school_subject->id]) }}" method="POST" id='myForm_{{ $school_subject->id }}'>
                                     @method('DELETE')
                                     @csrf
                                 </form>
-                                <a href="{{ route('fee_category.edit',['fee_category'=>$fee_category->id]) }}"  class="btn btn-info ">Edit</a>
-                                <a href="javascript:void(0);" onClick='on_delete({{ $fee_category->id }});' class="btn btn-danger ">Delete</a>
+                                <a href="{{ route('school_subject.edit',['school_subject'=>$school_subject->id]) }}"  class="btn btn-info ">Edit</a>
+                                <a href="javascript:void(0);" onClick='on_delete({{ $school_subject->id }});' class="btn btn-danger ">Delete</a>
                             </td>
 
 
@@ -84,7 +84,7 @@
                 confirmButtonText: '確定删除！'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                      $('#myForm_'+id).submit();
+                        $('#myForm_'+id).submit();
                     }
             })
             //alert(action);

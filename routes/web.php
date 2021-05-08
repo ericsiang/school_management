@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
+use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +122,26 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/{fee_category_id}/edit', [FeeAmountController::class,'edit'])->name('edit');
         Route::put('/{fee_category_id}', [FeeAmountController::class,'update'])->name('update');
         Route::get('/{fee_category_id}/detials', [FeeAmountController::class,'detials'])->name('detials');
+    });
+
+    //Exam Type
+    Route::prefix('exam_type/')->name('exam_type.')->group(function () {
+        Route::get('/', [ExamTypeController::class,'index'])->name('index');
+        Route::get('/create', [ExamTypeController::class,'create'])->name('create');
+        Route::post('/', [ExamTypeController::class,'store'])->name('store');
+        Route::get('/{exam_type}/edit', [ExamTypeController::class,'edit'])->name('edit');
+        Route::put('/{exam_type}', [ExamTypeController::class,'update'])->name('update');
+        Route::delete('/{exam_type}/delete', [ExamTypeController::class,'delete'])->name('delete');
+    });
+
+    //School Subject
+    Route::prefix('school_subject/')->name('school_subject.')->group(function () {
+        Route::get('/', [SchoolSubjectController::class,'index'])->name('index');
+        Route::get('/create', [SchoolSubjectController::class,'create'])->name('create');
+        Route::post('/', [SchoolSubjectController::class,'store'])->name('store');
+        Route::get('/{school_subject}/edit', [SchoolSubjectController::class,'edit'])->name('edit');
+        Route::put('/{school_subject}', [SchoolSubjectController::class,'update'])->name('update');
+        Route::delete('/{school_subject}/delete', [SchoolSubjectController::class,'delete'])->name('delete');
     });
 
 });

@@ -70,7 +70,7 @@
     <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
     <script src="{{ asset('backend/js/pages/data-table.js')}}"></script>
     <script>
-        function on_delete(){
+        function on_delete(id){
             Swal.fire({
                 title: '確定刪除嗎？',
                 text: "你將無法恢復此刪除！",
@@ -81,7 +81,7 @@
                 confirmButtonText: '確定删除！'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#myForm').submit();
+                      $('#myForm_'+id).submit();
                     }
             })
             //alert(action);

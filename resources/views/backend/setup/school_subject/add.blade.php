@@ -6,20 +6,20 @@
     <!-- Basic Forms -->
     <div class="box">
         <div class="box-header with-border">
-            <h4 class="box-title">Add Fee Category</h4>
+            <h4 class="box-title">Add School Subject</h4>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
             <div class="row">
                 <div class="col">
-                    <form action="{{ route('fee_category.store') }}" method='POST'>
+                    <form action="{{ route('school_subject.store') }}" method='POST'>
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h5>Fee Category Name<span class="text-danger">*</span></h5>
+                                            <h5>School Subject Name<span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                                                 <div class="help-block"></div>

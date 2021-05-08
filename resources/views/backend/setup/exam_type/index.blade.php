@@ -9,8 +9,8 @@
 
        <div class="box">
           <div class="box-header with-border">
-            <h3 class="box-title">Fee Category List</h3>
-            <a href="{{ route('fee_category.create') }}" style="float:right" class="btn btn-rounded btn-success mb-5">Add Fee Category</a>
+            <h3 class="box-title">Exam Type List</h3>
+            <a href="{{ route('exam_type.create') }}" style="float:right" class="btn btn-rounded btn-success mb-5">Add Exam Type</a>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -24,18 +24,18 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach ($fee_categorys as $k => $fee_category)
+                      @foreach ($exam_types as $k => $exam_type)
                         <tr>
                             <td>{{ $k+1 }}</td>
-                            <td>{{ $fee_category->name }}</td>
+                            <td>{{ $exam_type->name }}</td>
 
                             <td>
-                                <form action="{{ route('fee_category.delete',['fee_category'=>$fee_category->id]) }}" method="POST" id='myForm_{{ $fee_category->id }}'>
+                                <form action="{{ route('exam_type.delete',['exam_type'=>$exam_type->id]) }}" method="POST" id='myForm_{{ $exam_type->id }}'>
                                     @method('DELETE')
                                     @csrf
                                 </form>
-                                <a href="{{ route('fee_category.edit',['fee_category'=>$fee_category->id]) }}"  class="btn btn-info ">Edit</a>
-                                <a href="javascript:void(0);" onClick='on_delete({{ $fee_category->id }});' class="btn btn-danger ">Delete</a>
+                                <a href="{{ route('exam_type.edit',['exam_type'=>$exam_type->id]) }}"  class="btn btn-info ">Edit</a>
+                                <a href="javascript:void(0);" onClick='on_delete({{ $exam_type->id }});' class="btn btn-danger ">Delete</a>
                             </td>
 
 
@@ -84,7 +84,7 @@
                 confirmButtonText: '確定删除！'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                      $('#myForm_'+id).submit();
+                        $('#myForm_'+id).submit();
                     }
             })
             //alert(action);

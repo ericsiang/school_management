@@ -30,12 +30,12 @@
                             <td>{{ $student_group->name }}</td>
 
                             <td>
-                                <form action="{{ route('student_group.delete',['student_group'=>$student_group->id]) }}" method="POST" id='myForm'>
+                                <form action="{{ route('student_group.delete',['student_group'=>$student_group->id]) }}" method="POST" id='myForm_{{ $student_group->id }}'>
                                     @method('DELETE')
                                     @csrf
                                 </form>
                                 <a href="{{ route('student_group.edit',['student_group'=>$student_group->id]) }}"  class="btn btn-info ">Edit</a>
-                                <a href="javascript:void(0);" onClick='on_delete();' class="btn btn-danger ">Delete</a>
+                                <a href="javascript:void(0);" onClick='on_delete({{ $student_group->id }});' class="btn btn-danger ">Delete</a>
                             </td>
 
 
@@ -73,7 +73,7 @@
     <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
     <script src="{{ asset('backend/js/pages/data-table.js')}}"></script>
     <script>
-        function on_delete(){
+        function on_delete(id){
             Swal.fire({
                 title: '確定刪除嗎？',
                 text: "你將無法恢復此刪除！",
@@ -84,7 +84,7 @@
                 confirmButtonText: '確定删除！'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        $('#myForm').submit();
+                      $('#myForm_'+id).submit();
                     }
             })
             //alert(action);

@@ -48,14 +48,21 @@ class ProfileController extends Controller
 
         if($request->file('img')){
             $new_img=$request->file('img');
+            $save_path=public_path('upload/user_images');
+            
+            if (!file_exists($save_path)) {
+                mkdir($save_path, 777, true);
+            }
+
             //刪除原有圖片
             if(file_exists(public_path('upload/user_images/'.$user->img))){
                 @unlink(public_path('upload/user_images/'.$user->img));
             }
-
+           
             //使用Image套件上傳圖片
             $img_name=hexdec(uniqid()).'.'.strtolower($new_img->getClientOriginalExtension());
             $store_src='upload/user_images/'.$img_name;
+           
             Image::make($new_img)->resize(200,200)->save($store_src);
             $validated['img']=$store_src;
         }
