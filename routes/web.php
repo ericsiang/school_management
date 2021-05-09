@@ -6,11 +6,13 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\FeeAmountController;
+use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
+use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 
 /*
@@ -135,7 +137,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     //School Subject
-    Route::prefix('school_subject/')->name('school_subject.')->group(function () {
+    Route::prefix('school/subject/')->name('school_subject.')->group(function () {
         Route::get('/', [SchoolSubjectController::class,'index'])->name('index');
         Route::get('/create', [SchoolSubjectController::class,'create'])->name('create');
         Route::post('/', [SchoolSubjectController::class,'store'])->name('store');
@@ -143,5 +145,27 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::put('/{school_subject}', [SchoolSubjectController::class,'update'])->name('update');
         Route::delete('/{school_subject}/delete', [SchoolSubjectController::class,'delete'])->name('delete');
     });
+
+
+    //Assign Subject
+    Route::prefix('assign/subject/')->name('assign_subject.')->group(function () {
+        Route::get('/', [AssignSubjectController::class,'index'])->name('index');
+        Route::get('/create', [AssignSubjectController::class,'create'])->name('create');
+        Route::post('/', [AssignSubjectController::class,'store'])->name('store');
+        Route::get('/{class_id}/edit', [AssignSubjectController::class,'edit'])->name('edit');
+        Route::put('/{class_id}', [AssignSubjectController::class,'update'])->name('update');
+        Route::get('/{class_id}/detials', [AssignSubjectController::class,'detials'])->name('detials');
+    });
+
+    //Designation
+    Route::prefix('designation/')->name('designation.')->group(function () {
+        Route::get('/', [DesignationController::class,'index'])->name('index');
+        Route::get('/create', [DesignationController::class,'create'])->name('create');
+        Route::post('/', [DesignationController::class,'store'])->name('store');
+        Route::get('/{designation}/edit', [DesignationController::class,'edit'])->name('edit');
+        Route::put('/{designation}', [DesignationController::class,'update'])->name('update');
+        Route::delete('/{designation}/delete', [DesignationController::class,'delete'])->name('delete');
+    });
+
 
 });
