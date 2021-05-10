@@ -28,7 +28,7 @@ $route=Route::current()->getName();
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            @if (Auth::user()->role=='Admin')
             <li class="treeview {{ $prefix=='/users' ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="message-circle"></i>
@@ -42,7 +42,7 @@ $route=Route::current()->getName();
                     {{-- <li><a href="calendar.html"><i class="ti-more"></i>Add User</a></li> --}}
                 </ul>
             </li>
-
+            @endif
             <li class="treeview {{ $prefix=='/profile' ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Manage Profile</span>
@@ -56,10 +56,11 @@ $route=Route::current()->getName();
 
                 </ul>
             </li>
+
             @php
-                $prefix_arr=['/student/class','/student/year','/student/group','/student/shift'];
+                $prefix_str=substr($prefix, 0, 6);//取得字串前8個字
             @endphp
-            <li class="treeview {{ in_array($prefix,$prefix_arr)  ? 'active' : '' }}">
+            <li class="treeview {{ $prefix_str=='setups'  ? 'active' : '' }}">
                 <a href="#">
                     <i data-feather="mail"></i> <span>Setup Management </span>
                     <span class="pull-right-container">
@@ -87,7 +88,25 @@ $route=Route::current()->getName();
 
                     <li><a href="{{ route('designation.index') }}"><i class="ti-more"></i>Designation</a></li>
 
-                    
+
+                </ul>
+            </li>
+
+            @php
+                $prefix_str=substr($prefix, 0, 8);//取得字串前8個字
+
+            @endphp
+            <li class="treeview {{ $prefix_str=='students'  ? 'active' : '' }}">
+                <a href="#">
+                    <i data-feather="mail"></i> <span>Student Management </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('reg.index') }}"><i class="ti-more"></i>Student Registration</a></li>
+
+
                 </ul>
             </li>
 

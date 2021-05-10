@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-        $users=User::all();
+        $users=User::where('user_type','Admin')->get();
 
         return view('backend.user.index',compact('users'));
     }
@@ -22,14 +22,17 @@ class UserController extends Controller
 
         $validated=$request->validate(
             [
-                'usertype'=>'required',
                 'name'=>'required',
                 'email'=>'required|email|unique:users',
-                'password'=>'required'
+                //'password'=>'required',
+                'role'=>'required'
             ],
         );
-        $validated['password']=bcrypt($request->password);
-
+        //$validated['password']=bcrypt($request->password);
+        $code=rand(0000,9999);
+        $validated['user_type']='Admin';
+        $validated['code']=$code;
+        $validated['password']=bcrypt($code);
         $user=User::create($validated);
         $notification=[
             'message'=>'新增User成功',
@@ -47,15 +50,15 @@ class UserController extends Controller
         // dd($request->all());
         $validated=$request->validate(
             [
-                'usertype'=>'required',
+                'role'=>'required',
                 'name'=>'required',
                 'email'=>'required|email',
                 //'password'=>'required'
             ],
         );
-        if($request->password){
-            $validated['password']=bcrypt($request->password);
-        }
+        // if($request->password){
+        //     $validated['password']=bcrypt($request->password);
+        // }
 
 
         $user->update($validated);

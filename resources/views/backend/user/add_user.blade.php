@@ -21,10 +21,10 @@
                                         <div class="form-group">
                                             <h5>User Role <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="usertype" id="select" required class="form-control">
+                                                <select name="role" id="role" required class="form-control">
                                                     <option value="" selected='' disabled=''>Select Role</option>
-                                                    <option value="Admin" {{ old('usertype')=='Admin' ? 'selected' : ''  }}>Admin</option>
-                                                    <option value="User" {{ old('usertype')=='User' ? 'selected' : ''  }}>User</option>
+                                                    <option value="Admin" {{ old('role')=='Admin' ? 'selected' : ''  }}>Admin</option>
+                                                    <option value="Operator" {{ old('role')=='Operator' ? 'selected' : ''  }}>Operator</option>
                                                 </select>
                                             </div>
                                             @error('usertype')
@@ -58,7 +58,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <h5>Password<span class="text-danger">*</span></h5>
                                             <div class="controls">
@@ -69,7 +69,7 @@
                                                 <span style="color:#FF0000;">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

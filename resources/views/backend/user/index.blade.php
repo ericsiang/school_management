@@ -22,6 +22,7 @@
                         <th>Role</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Code</th>
                         <th width="25%">Action</th>
                       </tr>
                   </thead>
@@ -29,9 +30,10 @@
                       @foreach ($users as $k => $user)
                         <tr>
                             <td>{{ $k+1 }}</td>
-                            <td>{{ $user->usertype }}</td>
+                            <td>{{ $user->role }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->code }}</td>
                             @if ($k==0)
                                 <td>
                                     <a href="{{ route('user.edit',['user'=>$user->id]) }}"  class="btn btn-info ">Edit</a>

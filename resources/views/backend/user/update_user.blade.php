@@ -23,13 +23,13 @@
                                         <div class="form-group">
                                             <h5>User Role <span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="usertype" id="select" required class="form-control"
+                                                <select name="role" id="role" required class="form-control"
                                                 @if ($user->id==1)
                                                     disabled
                                                 @endif>
                                                     <option value="" selected='' disabled=''>Select Role</option>
-                                                    <option value="Admin" {{ $user->usertype=='Admin' ? 'selected' : ''  }}>Admin</option>
-                                                    <option value="User" {{ $user->usertype=='User' ? 'selected' : ''  }}>User</option>
+                                                    <option value="Admin" {{ $user->role=='Admin' ? 'selected' : ''  }}>Admin</option>
+                                                    <option value="Operator" {{ $user->role=='Operator' ? 'selected' : ''  }}>Operator</option>
                                                 </select>
                                             </div>
                                             @error('usertype')
@@ -65,7 +65,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <h5>Password<span class="text-danger">*</span></h5>
                                             <div class="controls">
@@ -74,7 +74,7 @@
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
