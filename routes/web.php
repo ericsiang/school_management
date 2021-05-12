@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
+use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
 
@@ -172,13 +173,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     //student registration
     Route::prefix('students')->group(function () {
-        Route::prefix('reg')->name('reg.')->group(function () {
-            Route::get('/', [StudentClassController::class,'index'])->name('index');
-            Route::get('/create', [StudentClassController::class,'create'])->name('create');
-            Route::post('/', [StudentClassController::class,'store'])->name('store');
-            Route::get('/{reg}/edit', [StudentClassController::class,'edit'])->name('edit');
-            Route::put('/{reg}', [StudentClassController::class,'update'])->name('update');
-            Route::delete('/{student_class}/delete', [StudentClassController::class,'delete'])->name('delete');
+        Route::prefix('reg')->name('student.reg.')->group(function () {
+            Route::get('/', [StudentRegController::class,'index'])->name('index');
+            Route::get('/create', [StudentRegController::class,'create'])->name('create');
+            Route::post('/', [StudentRegController::class,'store'])->name('store');
+            Route::get('/{reg}/edit', [StudentRegController::class,'edit'])->name('edit');
+            Route::put('/{reg}', [StudentRegController::class,'update'])->name('update');
+            Route::delete('/{student_class}/delete', [StudentRegController::class,'delete'])->name('delete');
 
         });
     });
