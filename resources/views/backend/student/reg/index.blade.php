@@ -107,6 +107,8 @@
                                             class="btn btn-info ">Edit</a>
                                         <a href="javascript:void(0);" onClick='on_delete({{ $assign_student->id }});'
                                             class="btn btn-danger ">Delete</a>
+                                        <a target="_blank" href="{{ route('student.reg.pdf',['assign_student'=>$assign_student->id]) }}"
+                                                class="btn btn-warning">Detials</a>
                                     </td>
 
 

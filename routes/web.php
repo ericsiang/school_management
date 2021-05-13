@@ -181,7 +181,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::get('/{assign_student}/edit', [StudentRegController::class,'edit'])->name('edit');
             Route::put('/{assign_student}', [StudentRegController::class,'update'])->name('update');
             Route::delete('/{assign_student}/delete', [StudentRegController::class,'delete'])->name('delete');
-
+            Route::get('/{assign_student}/show/pdf', [StudentRegController::class,'showpdf'])->name('pdf');
         });
     });
+
+
+
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Student;
 
 use DB;
+use PDF;
 use App\Models\User;
 use App\Models\StudentYear;
 use App\Models\StudentClass;
@@ -303,5 +304,13 @@ class StudentRegController extends Controller
             'alert-type'=>'info',
         ];
         return redirect()->route('student.reg.index')->with($notification);
+    }
+
+    public function showpdf(AssignStudent $assign_student){
+        $data=$assign_student->get();
+        $pdf = PDF::loadView('backend.student.reg.detials_pdf', compact('data'));
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+        return $pdf->stream('document.pdf');
+
     }
 }
