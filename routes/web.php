@@ -175,11 +175,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::prefix('students')->group(function () {
         Route::prefix('reg')->name('student.reg.')->group(function () {
             Route::get('/', [StudentRegController::class,'index'])->name('index');
+            Route::get('/search', [StudentRegController::class,'search'])->name('search');
             Route::get('/create', [StudentRegController::class,'create'])->name('create');
             Route::post('/', [StudentRegController::class,'store'])->name('store');
-            Route::get('/{reg}/edit', [StudentRegController::class,'edit'])->name('edit');
-            Route::put('/{reg}', [StudentRegController::class,'update'])->name('update');
-            Route::delete('/{student_class}/delete', [StudentRegController::class,'delete'])->name('delete');
+            Route::get('/{assign_student}/edit', [StudentRegController::class,'edit'])->name('edit');
+            Route::put('/{assign_student}', [StudentRegController::class,'update'])->name('update');
+            Route::delete('/{assign_student}/delete', [StudentRegController::class,'delete'])->name('delete');
 
         });
     });

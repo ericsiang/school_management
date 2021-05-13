@@ -14,6 +14,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
+
             <div class="row">
                 <div class="col">
                     <form action="{{ route('student.reg.store') }}" method='POST' enctype="multipart/form-data">
@@ -113,14 +114,14 @@
                                         <div class="form-group">
                                             <h5>Religion<span class="text-danger">*</span></h5>
                                             <div class="controls">
-                                                <select name="religon" id="religion"  class="form-control">
+                                                <select name="religion" id="religion"  class="form-control">
                                                     <option value="" selected='' disabled=''>Select Religion</option>
                                                     <option value="Islam" {{ old('religion')=='Islam' ? 'selected' : ''  }}>Islam</option>
                                                     <option value="Hindu" {{ old('religion')=='Hindu' ? 'selected' : ''  }}>Hindu</option>
                                                     <option value="Christan" {{ old('religion')=='Christan' ? 'selected' : ''  }}>Christan</option>
                                                 </select>
                                             </div>
-                                            @error('religon')
+                                            @error('religion')
                                                 <span style="color:#FF0000;">{{ $message }}</span>
                                             @enderror
                                         </div><!-- End form-group -->
@@ -177,7 +178,7 @@
                                             <h5>Class<span class="text-danger">*</span></h5>
                                             <div class="controls">
                                                 <select name="class_id" id="class_id"  class="form-control">
-                                                    <option value="" selected='' disabled=''>Select Religon</option>
+                                                    <option value="" selected='' disabled=''>Select Class</option>
                                                     @foreach ($data['classes'] as $class)
                                                         <option value="{{ $class->id }}" {{ old('class_id')== $class->id  ? 'selected' : ''  }}>{{ $class->name }}</option>
                                                     @endforeach
