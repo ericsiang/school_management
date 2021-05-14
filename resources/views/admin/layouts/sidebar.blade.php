@@ -106,7 +106,7 @@ $route=Route::current()->getName();
                 <ul class="treeview-menu">
                     <li><a href="{{ route('student.reg.index') }}"><i class="ti-more"></i>Student Registration</a></li>
 
-
+                    <li><a href="{{ route('student.roll.index') }}"><i class="ti-more"></i>Roll Generator</a></li>
                 </ul>
             </li>
 

@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\Setup\AssignSubjectController;
 use App\Http\Controllers\Backend\Setup\SchoolSubjectController;
+use App\Http\Controllers\Backend\Student\StudentRollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -183,7 +184,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::delete('/{assign_student}/delete', [StudentRegController::class,'delete'])->name('delete');
             Route::get('/{assign_student}/show/pdf', [StudentRegController::class,'showpdf'])->name('pdf');
         });
+
+        Route::prefix('roll')->name('student.roll.')->group(function () {
+            Route::get('/', [StudentRollController::class,'index'])->name('index');
+            Route::get('/getStudents', [StudentRollController::class,'getStudents'])->name('get_students');
+            Route::post('/', [StudentRollController::class,'store'])->name('store');
+        });
     });
+
+
+
 
 
 

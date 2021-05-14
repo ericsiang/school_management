@@ -55,67 +55,67 @@
     <td>{{ $data[0]->student_user->name }}</td>
   </tr>
   <tr>
-    <td>1</td>
+    <td>2</td>
     <td>Student ID No</td>
     <td>{{ $data[0]->student_user->id_no }}</td>
   </tr>
   <tr>
-    <td>2</td>
+    <td>3</td>
     <td>Father's Name</td>
     <td>{{ $data[0]->student_user->fname }}</td>
   </tr>
   <tr>
-    <td>3</td>
+    <td>4</td>
     <td>Mother's Name</td>
     <td>{{ $data[0]->student_user->mname }}</td>
   </tr>
   <tr>
-    <td>4</td>
+    <td>5</td>
     <td>Mobile</td>
     <td>{{ $data[0]->student_user->mobile }}</td>
   </tr>
   <tr>
-    <td>5</td>
+    <td>6</td>
     <td>Address</td>
     <td>{{ $data[0]->student_user->address }}</td>
   </tr>
   <tr>
-    <td>6</td>
+    <td>7</td>
     <td>Gender</td>
     <td>{{ $data[0]->student_user->gender }}</td>
   </tr>
   <tr>
-    <td>7</td>
+    <td>8</td>
     <td>Religion</td>
     <td>{{ $data[0]->student_user->religion }}</td>
   </tr>
   <tr>
-    <td>8</td>
+    <td>9</td>
     <td>Date of Birth</td>
     <td>{{ $data[0]->student_user->dob }}</td>
   </tr>
   <tr>
-    <td>9</td>
+    <td>10</td>
     <td>Discount</td>
     <td>{{ $data[0]->student_discount->discount }}</td>
   </tr>
   <tr>
-    <td>10</td>
+    <td>11</td>
     <td>Year</td>
     <td>{{ $data[0]->student_year->name }}</td>
   </tr>
   <tr>
-    <td>11</td>
+    <td>12</td>
     <td>Class</td>
     <td>{{ $data[0]->student_class->name }}</td>
   </tr>
   <tr>
-    <td>12</td>
+    <td>13</td>
     <td>Group</td>
     <td>{{ $data[0]->student_group->name }}</td>
   </tr>
   <tr>
-    <td>13</td>
+    <td>14</td>
     <td>Shift</td>
     <td>{{ $data[0]->student_shift->name }}</td>
   </tr>

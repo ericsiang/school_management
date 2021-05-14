@@ -313,4 +313,9 @@ class StudentRegController extends Controller
         return $pdf->stream('document.pdf');
 
     }
+
+    public function roll_index(){
+        
+    }
+
 }
